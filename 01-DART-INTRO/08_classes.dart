@@ -28,9 +28,10 @@ String greetPerson({required String name, message = "Hola, "}) {
 }
 
 void main() {
-  final Hero wolverine = Hero("Logan", "Regen");
+  final Hero wolverine = Hero(name: "Logan", power: "Regen");
   print(wolverine.name);
   print(wolverine.power);
+  print(wolverine.toString());
 }
 
 class Hero {
@@ -43,5 +44,14 @@ class Hero {
     power = pPower; */
 
   //another way to init class
-  Hero(this.name, this.power);
+  Hero({required this.name, required this.power});
+
+  //it is used to change the default behaviour of a function.
+  @override
+  String toString() {
+    return """
+    name: $name
+    power: $power
+     """;
+  }
 }
