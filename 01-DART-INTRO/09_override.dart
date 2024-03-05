@@ -45,4 +45,13 @@ class Hero {
 
   //another way to init class
   Hero({required this.name, required this.power});
+
+  //it is used to change the default behaviour of a function.
+  @override
+  String toString() {
+    return """
+    name: $name
+    power: $power
+     """;
+  }
 }
