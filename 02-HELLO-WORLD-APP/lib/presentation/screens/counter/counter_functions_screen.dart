@@ -44,40 +44,59 @@ class _CounterFuncitonsScreenState extends State<CounterFuncitonsScreen> {
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            FloatingActionButton(
-              shape: const StadiumBorder(),
+            CustomFAB(
+              icon: Icons.refresh,
               onPressed: () {
-                clickCounter++;
-                //needed to update the counter.
-                setState(() {});
+                setState(() {
+                  clickCounter = 0;
+                });
               },
-              child: const Icon(Icons.plus_one),
             ),
             const SizedBox(
               height: 10,
             ),
-            FloatingActionButton(
-              shape: const StadiumBorder(),
+            CustomFAB(
+              icon: Icons.plus_one,
               onPressed: () {
-                clickCounter--;
-                //needed to update the counter.
-                setState(() {});
+                setState(() {
+                  clickCounter++;
+                });
               },
-              child: const Icon(Icons.exposure_minus_1_outlined),
             ),
             const SizedBox(
               height: 10,
             ),
-            FloatingActionButton(
-              shape: const StadiumBorder(),
+            CustomFAB(
+              icon: Icons.exposure_minus_1_outlined,
               onPressed: () {
-                clickCounter--;
-                //needed to update the counter.
-                setState(() {});
+                setState(() {
+                  clickCounter--;
+                });
               },
-              child: const Icon(Icons.exposure_minus_1_outlined),
-            )
+            ),
           ],
         ));
+  }
+}
+
+class CustomFAB extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  const CustomFAB({
+    super.key,
+    required this.icon,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      shape: const StadiumBorder(),
+      onPressed: () {
+        onPressed();
+      },
+      child: Icon(icon),
+    );
   }
 }
