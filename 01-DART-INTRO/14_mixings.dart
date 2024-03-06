@@ -1,4 +1,5 @@
 //part 24,25
+// https://medium.com/flutter-community/dart-what-are-mixins-3a72344011f3
 void main(List<String> args) {
   final flipper = Delfin();
   flipper.nadar();
