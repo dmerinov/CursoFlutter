@@ -15,7 +15,7 @@ Future<String> httpGet(String url) {
 Future<String> httpFailedGet(String url) {
   throw "Error in http petition";
 
-  return Future.delayed(const Duration(seconds: 2), () {
+  /*return Future.delayed(const Duration(seconds: 2), () {
     return 'Response';
-  });
+  });*/
 }
