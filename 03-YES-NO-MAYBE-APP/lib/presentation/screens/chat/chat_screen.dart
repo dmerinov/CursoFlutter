@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:yes_no_maybe_app/presentation/widgets/chat/contact_message_bubble.dart';
 import 'package:yes_no_maybe_app/presentation/widgets/chat/my_message_bubble.dart';
+import 'package:yes_no_maybe_app/presentation/widgets/shared/message_field_box.dart';
 
 const String avatarImage =
     'https://i.pinimg.com/150x150/b0/59/36/b05936f8b610178415d8b5a9a4b162ba.jpg';
@@ -56,7 +56,8 @@ class _ChatView extends StatelessWidget {
               },
             ), //as if it was a recyclerview in android cause of the .builder
           ),
-          Text('hola')
+          //textbox
+          const MessageFieldBox()
         ],
       ),
     ));
