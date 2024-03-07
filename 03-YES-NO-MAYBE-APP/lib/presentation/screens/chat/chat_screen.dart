@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:yes_no_maybe_app/presentation/widgets/chat/contact_message_bubble.dart';
 import 'package:yes_no_maybe_app/presentation/widgets/chat/my_message_bubble.dart';
 
 const String avatarImage =
@@ -49,7 +50,9 @@ class _ChatView extends StatelessWidget {
             child: ListView.builder(
               itemCount: 100,
               itemBuilder: (context, index) {
-                return const MyMessageBubble();
+                return (index % 2 == 0)
+                    ? const ContactMessageBubble()
+                    : const MyMessageBubble();
               },
             ), //as if it was a recyclerview in android cause of the .builder
           ),
