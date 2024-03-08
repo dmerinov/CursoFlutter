@@ -16,7 +16,7 @@ class YesNoModel {
       answer: json['answer'], forced: json['forced'], image: json['image']);
 
   Message toMessageEntitiy() => Message(
-      text: answer == 'Yes' ? 'Si' : 'No',
+      text: answer == 'yes' ? 'Si' : 'No',
       fromWho: FromWho.hers,
       imageUrl: (image != null)
           ? image
