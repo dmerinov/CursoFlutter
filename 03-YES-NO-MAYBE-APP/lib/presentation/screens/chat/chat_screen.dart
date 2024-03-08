@@ -64,7 +64,10 @@ class _ChatView extends StatelessWidget {
             ), //as if it was a recyclerview in android cause of the .builder
           ),
           //textbox
-          const MessageFieldBox()
+          MessageFieldBox(
+            //onValue: (value) => chatProvider.sendMessage(value),
+            onValue: chatProvider.sendMessage,
+          )
         ],
       ),
     ));
