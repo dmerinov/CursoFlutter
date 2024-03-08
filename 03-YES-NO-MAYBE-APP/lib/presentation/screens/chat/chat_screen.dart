@@ -59,7 +59,9 @@ class _ChatView extends StatelessWidget {
               itemBuilder: (context, index) {
                 final message = chatProvider.messages[index];
                 return (message.fromWho == FromWho.hers)
-                    ? ContactMessageBubble()
+                    ? ContactMessageBubble(
+                        message: message,
+                      )
                     : MyMessageBubble(message: message);
               },
             ), //as if it was a recyclerview in android cause of the .builder
