@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tok_tik/presentation/widgets/video/video_background.dart';
 import 'package:video_player/video_player.dart';
 
 class FullScreenPlayer extends StatefulWidget {
@@ -45,15 +46,17 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
         return Stack(
           children: [
             GestureDetector(
-              onTap: () {
-                if (_controller.value.isPlaying) {
-                  _controller.pause();
-                  return;
-                }
-                _controller.play();
-              },
-              child: VideoPlayer(_controller),
-            ),
+                onTap: () {
+                  if (_controller.value.isPlaying) {
+                    _controller.pause();
+                    return;
+                  }
+                  _controller.play();
+                },
+                child: Stack(children: [
+                  VideoPlayer(_controller),
+                  const VideoBackground()
+                ])),
             Positioned(
                 bottom: 50,
                 left: 20,
