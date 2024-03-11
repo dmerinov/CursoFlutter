@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:tok_tik/config/helpers/human_formats.dart';
 import 'package:tok_tik/domain/entities/video_post.dart';
 
 class VideoButtons extends StatelessWidget {
@@ -42,7 +45,7 @@ class _customIconButton extends StatelessWidget {
             size: 30,
           ),
         ),
-        Text('$value')
+        Text(HumanFormats.humanReadableNumber(value.toDouble()))
       ],
     );
   }
