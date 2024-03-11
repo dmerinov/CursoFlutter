@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:video_player/video_player.dart';
 
 class FullScreenPlayer extends StatefulWidget {
@@ -35,11 +36,51 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
     return FutureBuilder(
       future: _controller.initialize(),
       builder: (context, snapshot) {
-        return const Center(
-            child: CircularProgressIndicator(
-          strokeWidth: 2,
-        ));
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(
+              child: CircularProgressIndicator(
+            strokeWidth: 2,
+          ));
+        }
+        return Stack(
+          children: [
+            GestureDetector(
+              onTap: () {
+                if (_controller.value.isPlaying) {
+                  _controller.pause();
+                  return;
+                }
+                _controller.play();
+              },
+              child: VideoPlayer(_controller),
+            ),
+            Positioned(
+                bottom: 50,
+                left: 20,
+                child: _VideoCaption(
+                  caption: widget.caption,
+                ))
+          ],
+        );
       },
+    );
+  }
+}
+
+class _VideoCaption extends StatelessWidget {
+  final String caption;
+
+  const _VideoCaption({required this.caption});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * 0.6,
+      child: Text(
+        caption,
+        maxLines: 2,
+      ),
     );
   }
 }
